@@ -1,0 +1,8 @@
+# Принудительно использовать LF для всех текстовых файлов
+* text=auto
+
+# Специально для кода
+*.cs text eol=lf
+*.csproj text eol=lf
+*.sln text eol=lf
+*.sh text eol=lf

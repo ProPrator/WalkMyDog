@@ -1,0 +1,22 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.mdb
+
+# Rider / JetBrains
+.idea/
+*.iml
+
+
+# Dotnet publish folder
+publish/
+
+# User secrets
+secrets.json
+
+# Docker volumes (если будут локальные)
+pgdata/
