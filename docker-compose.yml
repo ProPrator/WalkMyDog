@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: walkmydog-api
+    ports:
+      - "8080:8080"  # maps container port 8080 to host
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      # Connection string for EF Core (Postgres service is 'db')
+      ConnectionStrings__Default: Host=db;Port=5432;Database=walkmydog;Username=walkmydog;Password=secret
+    depends_on:
+      - db  # ensure API starts after the database
+
+  db:
+    image: postgres:16
+    container_name: walkmydog-db
+    environment:
+      POSTGRES_USER: walkmydog
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: walkmydog
+    ports:
+      - "5432:5432"  # Postgres accessible on host machine
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # persistent storage
+
+volumes:
+  pgdata:  # Docker volume for database persistence
