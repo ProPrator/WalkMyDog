@@ -6,8 +6,7 @@ WORKDIR /src
 
 # Copy solution and project files first (for faster restore caching)
 COPY *.sln ./
-COPY WalkMyDog.Api/*.csproj WalkMyDog.Api/
-COPY WalkMyDog.Application/*.csproj WalkMyDog.Application/
+COPY *.csproj ./
 
 # Restore dependencies
 RUN dotnet restore
@@ -16,7 +15,7 @@ RUN dotnet restore
 COPY . .
 
 # Publish the API project to a folder
-RUN dotnet publish WalkMyDog.Api/WalkMyDog.Api.csproj -c Release -o /app/publish
+RUN dotnet publish WalkMyDog.Api.csproj -c Release -o /app/publish
 
 # -----------------------------
 # Stage 2: Runtime image
