@@ -9,7 +9,7 @@ COPY *.sln ./
 COPY *.csproj ./
 
 # Restore dependencies
-RUN dotnet restore
+RUN dotnet restore "WalkMyDog.Api.csproj"
 
 # Copy all source code
 COPY . .
